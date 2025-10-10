@@ -1,0 +1,6 @@
+@Tekever_Challenge_HostAddress = http://localhost:5144
+
+GET {{Tekever_Challenge_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
