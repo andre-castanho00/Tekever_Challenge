@@ -46,6 +46,11 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+// Tells JSON to safely ignore navigation loops
+builder.Services.AddControllers()
+    .AddJsonOptions(opt =>
+        opt.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles);
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -60,6 +65,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// User needs to be Authenticated
+app.UseAuthentication();
 
 app.UseAuthorization();
 

@@ -9,6 +9,7 @@ namespace Tekever_Challenge.Models
         [Required]
         public string Name { get; set; }
         public string? BirthDate { get; set; }
+
         public ICollection<TvShowActor> TvShowActors { get; set; } = new List<TvShowActor>();
     }
 }

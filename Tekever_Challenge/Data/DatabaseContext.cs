@@ -6,14 +6,15 @@ using Tekever_Challenge.Models;
 
 namespace Tekever_Challenge.Data
 {
-    public class DatabaseContext: IdentityDbContext<User>
+    public class DatabaseContext : IdentityDbContext<User>
     {
-        public DatabaseContext(DbContextOptions<DatabaseContext> options): base(options) { }
+        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
 
         public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         public DbSet<TvShow> TvShows { get; set; }
-        public DbSet<Episode> Episodes { get; set; }
+        public DbSet<Season> Seasons { get; set; }
+        public DbSet<SeasonEpisode> SeasonEpisodes { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<TvShowActor> TvShowActors { get; set; }
@@ -28,135 +29,98 @@ namespace Tekever_Challenge.Data
             builder.Entity<TvShowActor>()
                 .HasKey(x => new { x.TvShowId, x.ActorId });
 
-            // Optional: configure FK relationships
-            //builder.Entity<TvShowActor>()
-            //    .HasOne<TvShow>()
-            //    .WithMany()
-            //    .HasForeignKey(x => x.TvShowId)
-            //    .OnDelete(DeleteBehavior.Cascade);
-
-            //builder.Entity<TvShowActor>()
-            //    .HasOne<Actor>()
-            //    .WithMany()
-            //    .HasForeignKey(x => x.ActorId)
-            //    .OnDelete(DeleteBehavior.Cascade);
-
             // --- Many-to-many: TvShow <-> Genre
             builder.Entity<TvShowGenre>()
                 .HasKey(x => new { x.TvShowId, x.GenreId });
-
-            //builder.Entity<TvShowGenre>()
-            //    .HasOne<TvShow>()
-            //    .WithMany()
-            //    .HasForeignKey(x => x.TvShowId)
-            //    .OnDelete(DeleteBehavior.Cascade);
-
-            //builder.Entity<TvShowGenre>()
-            //    .HasOne<Genre>()
-            //    .WithMany()
-            //    .HasForeignKey(x => x.GenreId)
-            //    .OnDelete(DeleteBehavior.Cascade);
 
             // --- Many-to-many: User <-> TvShow (Favorites)
             builder.Entity<UserFavorites>()
                 .HasKey(x => new { x.UserId, x.TvShowId });
 
-            //builder.Entity<UserFavorites>()
-            //    .HasOne<User>()
-            //    .WithMany()
-            //    .HasForeignKey(x => x.UserId)
-            //    .OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<Season>()
+                .HasOne(s => s.TvShow)
+                .WithMany(t => t.Seasons)
+                .HasForeignKey(s => s.TvShowId)
+                .OnDelete(DeleteBehavior.Cascade);
 
-            //builder.Entity<UserFavorites>()
-            //    .HasOne<TvShow>()
-            //    .WithMany()
-            //    .HasForeignKey(x => x.TvShowId)
-            //    .OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<SeasonEpisode>()
+                .HasOne(e => e.Season)
+                .WithMany(s => s.Episodes)
+                .HasForeignKey(e => e.SeasonId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             PopulateDatabase(builder);
         }
 
         private void PopulateDatabase(ModelBuilder modelBuilder)
         {
-            var random = new Random();
+            // === Genres ===
+            modelBuilder.Entity<Genre>().HasData(
+                new Genre { Id = 1, Name = "Drama" },
+                new Genre { Id = 2, Name = "Comedy" },
+                new Genre { Id = 3, Name = "Action" },
+                new Genre { Id = 4, Name = "Sci-Fi" }
+            );
 
-            // Genres
-            var genres = new[]
-            {
-                new Genre { Id = 101, Name = "Drama" },
-                new Genre { Id = 102, Name = "Comedy" },
-                new Genre { Id = 103, Name = "Action" },
-                new Genre { Id = 104, Name = "Sci-Fi" },
-                new Genre { Id = 105, Name = "Fantasy" }
-            };
-            modelBuilder.Entity<Genre>().HasData(genres);
+            // === Actors ===
+            modelBuilder.Entity<Actor>().HasData(
+                new Actor { Id = 1, Name = "Cillian Murphy" },
+                new Actor { Id = 2, Name = "Bryan Cranston" },
+                new Actor { Id = 3, Name = "Jennifer Aniston" },
+                new Actor { Id = 4, Name = "Pedro Pascal" }
+            );
 
-            // TvShows
-            var shows = new[]
-            {
-                new TvShow { Id = 2001, Title = "Peaky Blinders", ReleaseDate = new DateTime(2022, 5, 10), Rating = 9.0 },
-                new TvShow { Id = 2002, Title = "Suits", ReleaseDate = new DateTime(2023, 2, 14), Rating = 8.8 },
-                new TvShow { Id = 2003, Title = "Friends", ReleaseDate = new DateTime(2021, 9, 1), Rating = 5.2 },
-                new TvShow { Id = 2004, Title = "Modern Family", ReleaseDate = new DateTime(2020, 12, 25), Rating = 9.5}
-            };
-            modelBuilder.Entity<TvShow>().HasData(shows);
+            // === TV Shows ===
+            modelBuilder.Entity<TvShow>().HasData(
+                new TvShow { Id = 1, Title = "Peaky Blinders", Description = "British crime drama", ReleaseDate = new DateTime(2013, 9, 12), Rating = 9.1 },
+                new TvShow { Id = 2, Title = "Breaking Bad", Description = "Chemistry teacher turns to crime", ReleaseDate = new DateTime(2008, 1, 20), Rating = 9.5 },
+                new TvShow { Id = 3, Title = "Friends", Description = "Six friends navigate life in NYC", ReleaseDate = new DateTime(1994, 9, 22), Rating = 8.9 },
+                new TvShow { Id = 4, Title = "The Mandalorian", Description = "Star Wars bounty hunter saga", ReleaseDate = new DateTime(2019, 11, 12), Rating = 8.7 }
+            );
 
-            // Episodes
-            var episodes = new List<Episode>();
-            int episodeId = 30001;
-            foreach (var show in shows)
-            {
-                for (int i = 1; i <= random.Next(3, 6); i++)
-                {
-                    episodes.Add(new Episode
-                    {
-                        Id = episodeId++,
-                        TvShowId = show.Id,
-                        Title = $"{show.Title} - Episode {i}",
-                        SeasonNumber = i,
-                        EpisodeNumber = i+4,
-                        ReleaseDate = show.ReleaseDate.AddDays(i * 7)
-                    });
-                }
-            }
-            modelBuilder.Entity<Episode>().HasData(episodes);
+            // === TvShowGenres ===
+            modelBuilder.Entity<TvShowGenre>().HasData(
+                new TvShowGenre { TvShowId = 1, GenreId = 1 },
+                new TvShowGenre { TvShowId = 2, GenreId = 3 },
+                new TvShowGenre { TvShowId = 3, GenreId = 2 },
+                new TvShowGenre { TvShowId = 4, GenreId = 4 }
+            );
 
-            // Actors
-            var actors = new[]
-            {
-                new Actor { Id = 1, Name = "John Carter" },
-                new Actor { Id = 2, Name = "Emma Wilson" },
-                new Actor { Id = 3, Name = "Carlos Vega" },
-                new Actor { Id = 4, Name = "Mia Chen" },
-                new Actor { Id = 5, Name = "Tom Novak" }
-            };
-            modelBuilder.Entity<Actor>().HasData(actors);
+            // === TvShowActors ===
+            modelBuilder.Entity<TvShowActor>().HasData(
+                new TvShowActor { TvShowId = 1, ActorId = 1 },
+                new TvShowActor { TvShowId = 2, ActorId = 2 },
+                new TvShowActor { TvShowId = 3, ActorId = 3 },
+                new TvShowActor { TvShowId = 4, ActorId = 4 }
+            );
 
-            // TvShowGenre
-            var showGenres = new List<TvShowGenre>();
-            foreach (var show in shows)
-            {
-                var genreCount = random.Next(1, 3);
-                var randomGenres = genres.OrderBy(x => random.Next()).Take(genreCount);
-                foreach (var g in randomGenres)
-                {
-                    showGenres.Add(new TvShowGenre { TvShowId = show.Id, GenreId = g.Id });
-                }
-            }
-            modelBuilder.Entity<TvShowGenre>().HasData(showGenres);
+            // === Seasons ===
+            modelBuilder.Entity<Season>().HasData(
+                new Season { Id = 1, TvShowId = 1, SeasonNumber = 1, ReleaseDate = new DateTime(2013, 9, 12) },
+                new Season { Id = 2, TvShowId = 1, SeasonNumber = 2, ReleaseDate = new DateTime(2014, 10, 2) },
+                new Season { Id = 3, TvShowId = 2, SeasonNumber = 1, ReleaseDate = new DateTime(2008, 1, 20) },
+                new Season { Id = 4, TvShowId = 3, SeasonNumber = 1, ReleaseDate = new DateTime(1994, 9, 22) },
+                new Season { Id = 5, TvShowId = 4, SeasonNumber = 1, ReleaseDate = new DateTime(2019, 11, 12) }
+            );
 
-            // TvShowActor
-            var showActors = new List<TvShowActor>();
-            foreach (var show in shows)
-            {
-                var actorCount = random.Next(2, 4);
-                var randomActors = actors.OrderBy(x => random.Next()).Take(actorCount);
-                foreach (var a in randomActors)
-                {
-                    showActors.Add(new TvShowActor { TvShowId = show.Id, ActorId = a.Id });
-                }
-            }
-            modelBuilder.Entity<TvShowActor>().HasData(showActors);
+            // === SeasonEpisodes ===
+            modelBuilder.Entity<SeasonEpisode>().HasData(
+                // Peaky Blinders - Season 1
+                new SeasonEpisode { Id = 1, SeasonId = 1, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2013, 9, 12), Rating = 8.6 },
+                new SeasonEpisode { Id = 2, SeasonId = 1, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2013, 9, 19), Rating = 8.7 },
+                new SeasonEpisode { Id = 3, SeasonId = 2, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2014, 10, 2), Rating = 8.9 },
+
+                // Breaking Bad - Season 1
+                new SeasonEpisode { Id = 4, SeasonId = 3, EpisodeNumber = 1, Title = "Pilot", AirDate = new DateTime(2008, 1, 20), Rating = 9.0 },
+                new SeasonEpisode { Id = 5, SeasonId = 3, EpisodeNumber = 2, Title = "Cat's in the Bag...", AirDate = new DateTime(2008, 1, 27), Rating = 8.7 },
+
+                // Friends - Season 1
+                new SeasonEpisode { Id = 6, SeasonId = 4, EpisodeNumber = 1, Title = "The One Where It All Began", AirDate = new DateTime(1994, 9, 22), Rating = 8.3 },
+
+                // Mandalorian - Season 1
+                new SeasonEpisode { Id = 7, SeasonId = 5, EpisodeNumber = 1, Title = "Chapter 1: The Mandalorian", AirDate = new DateTime(2019, 11, 12), Rating = 8.9 },
+                new SeasonEpisode { Id = 8, SeasonId = 5, EpisodeNumber = 2, Title = "Chapter 2: The Child", AirDate = new DateTime(2019, 11, 15), Rating = 8.8 }
+            );
         }
     }
 }

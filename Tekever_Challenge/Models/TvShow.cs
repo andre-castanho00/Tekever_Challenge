@@ -17,7 +17,7 @@ namespace Tekever_Challenge.Models
         public double? Rating { get; set; }
 
         // Relationships
-        public ICollection<Episode> Episodes { get; set; } = new List<Episode>();
+        public ICollection<Season> Seasons { get; set; } = new List<Season>();
         public ICollection<TvShowGenre> TvShowGenres { get; set; } = new List<TvShowGenre>();
         public ICollection<TvShowActor> TvShowActors { get; set; } = new List<TvShowActor>();
         public ICollection<UserFavorites> UserFavorites { get; set; } = new List<UserFavorites>();

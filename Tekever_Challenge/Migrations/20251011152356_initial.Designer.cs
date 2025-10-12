@@ -11,8 +11,8 @@ using Tekever_Challenge.Data;
 namespace Tekever_Challenge.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20251010231241_populate")]
-    partial class populate
+    [Migration("20251011152356_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -171,211 +171,22 @@ namespace Tekever_Challenge.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "John Carter"
+                            Name = "Cillian Murphy"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Emma Wilson"
+                            Name = "Bryan Cranston"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Carlos Vega"
+                            Name = "Jennifer Aniston"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Mia Chen"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Tom Novak"
-                        });
-                });
-
-            modelBuilder.Entity("Tekever_Challenge.Models.Episode", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("EpisodeNumber")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ReleaseDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("SeasonNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("TvShowId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TvShowId");
-
-                    b.ToTable("Episodes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 30001,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2022, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Peaky Blinders - Episode 1",
-                            TvShowId = 2001
-                        },
-                        new
-                        {
-                            Id = 30002,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2022, 5, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Peaky Blinders - Episode 2",
-                            TvShowId = 2001
-                        },
-                        new
-                        {
-                            Id = 30003,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2022, 5, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Peaky Blinders - Episode 3",
-                            TvShowId = 2001
-                        },
-                        new
-                        {
-                            Id = 30004,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2022, 6, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Peaky Blinders - Episode 4",
-                            TvShowId = 2001
-                        },
-                        new
-                        {
-                            Id = 30005,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2022, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Peaky Blinders - Episode 5",
-                            TvShowId = 2001
-                        },
-                        new
-                        {
-                            Id = 30006,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2023, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Suits - Episode 1",
-                            TvShowId = 2002
-                        },
-                        new
-                        {
-                            Id = 30007,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2023, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Suits - Episode 2",
-                            TvShowId = 2002
-                        },
-                        new
-                        {
-                            Id = 30008,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2023, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Suits - Episode 3",
-                            TvShowId = 2002
-                        },
-                        new
-                        {
-                            Id = 30009,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Suits - Episode 4",
-                            TvShowId = 2002
-                        },
-                        new
-                        {
-                            Id = 30010,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2021, 9, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Friends - Episode 1",
-                            TvShowId = 2003
-                        },
-                        new
-                        {
-                            Id = 30011,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2021, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Friends - Episode 2",
-                            TvShowId = 2003
-                        },
-                        new
-                        {
-                            Id = 30012,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2021, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Friends - Episode 3",
-                            TvShowId = 2003
-                        },
-                        new
-                        {
-                            Id = 30013,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2021, 9, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Friends - Episode 4",
-                            TvShowId = 2003
-                        },
-                        new
-                        {
-                            Id = 30014,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2021, 10, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Friends - Episode 5",
-                            TvShowId = 2003
-                        },
-                        new
-                        {
-                            Id = 30015,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Modern Family - Episode 1",
-                            TvShowId = 2004
-                        },
-                        new
-                        {
-                            Id = 30016,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2021, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Modern Family - Episode 2",
-                            TvShowId = 2004
-                        },
-                        new
-                        {
-                            Id = 30017,
-                            EpisodeNumber = 0,
-                            ReleaseDate = new DateTime(2021, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonNumber = 0,
-                            Title = "Modern Family - Episode 3",
-                            TvShowId = 2004
+                            Name = "Pedro Pascal"
                         });
                 });
 
@@ -396,28 +207,23 @@ namespace Tekever_Challenge.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 101,
+                            Id = 1,
                             Name = "Drama"
                         },
                         new
                         {
-                            Id = 102,
+                            Id = 2,
                             Name = "Comedy"
                         },
                         new
                         {
-                            Id = 103,
+                            Id = 3,
                             Name = "Action"
                         },
                         new
                         {
-                            Id = 104,
+                            Id = 4,
                             Name = "Sci-Fi"
-                        },
-                        new
-                        {
-                            Id = 105,
-                            Name = "Fantasy"
                         });
                 });
 
@@ -455,6 +261,168 @@ namespace Tekever_Challenge.Migrations
                     b.ToTable("RefreshTokens");
                 });
 
+            modelBuilder.Entity("Tekever_Challenge.Models.Season", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ReleaseDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("SeasonNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TvShowId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TvShowId");
+
+                    b.ToTable("Seasons");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ReleaseDate = new DateTime(2013, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonNumber = 1,
+                            TvShowId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ReleaseDate = new DateTime(2014, 10, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonNumber = 2,
+                            TvShowId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ReleaseDate = new DateTime(2008, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonNumber = 1,
+                            TvShowId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ReleaseDate = new DateTime(1994, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonNumber = 1,
+                            TvShowId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ReleaseDate = new DateTime(2019, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonNumber = 1,
+                            TvShowId = 4
+                        });
+                });
+
+            modelBuilder.Entity("Tekever_Challenge.Models.SeasonEpisode", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("AirDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("EpisodeNumber")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("Rating")
+                        .HasColumnType("double");
+
+                    b.Property<int>("SeasonId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SeasonId");
+
+                    b.ToTable("SeasonEpisodes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AirDate = new DateTime(2013, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EpisodeNumber = 1,
+                            Rating = 8.5999999999999996,
+                            SeasonId = 1,
+                            Title = "Episode 1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AirDate = new DateTime(2013, 9, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EpisodeNumber = 2,
+                            Rating = 8.6999999999999993,
+                            SeasonId = 1,
+                            Title = "Episode 2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AirDate = new DateTime(2014, 10, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EpisodeNumber = 1,
+                            Rating = 8.9000000000000004,
+                            SeasonId = 2,
+                            Title = "Episode 1"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AirDate = new DateTime(2008, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EpisodeNumber = 1,
+                            Rating = 9.0,
+                            SeasonId = 3,
+                            Title = "Pilot"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AirDate = new DateTime(2008, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EpisodeNumber = 2,
+                            Rating = 8.6999999999999993,
+                            SeasonId = 3,
+                            Title = "Cat's in the Bag..."
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AirDate = new DateTime(1994, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EpisodeNumber = 1,
+                            Rating = 8.3000000000000007,
+                            SeasonId = 4,
+                            Title = "The One Where It All Began"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AirDate = new DateTime(2019, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EpisodeNumber = 1,
+                            Rating = 8.9000000000000004,
+                            SeasonId = 5,
+                            Title = "Chapter 1: The Mandalorian"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AirDate = new DateTime(2019, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EpisodeNumber = 2,
+                            Rating = 8.8000000000000007,
+                            SeasonId = 5,
+                            Title = "Chapter 2: The Child"
+                        });
+                });
+
             modelBuilder.Entity("Tekever_Challenge.Models.TvShow", b =>
                 {
                     b.Property<int>("Id")
@@ -481,31 +449,35 @@ namespace Tekever_Challenge.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 2001,
-                            Rating = 9.0,
-                            ReleaseDate = new DateTime(2022, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 1,
+                            Description = "British crime drama",
+                            Rating = 9.0999999999999996,
+                            ReleaseDate = new DateTime(2013, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Peaky Blinders"
                         },
                         new
                         {
-                            Id = 2002,
-                            Rating = 8.8000000000000007,
-                            ReleaseDate = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Suits"
+                            Id = 2,
+                            Description = "Chemistry teacher turns to crime",
+                            Rating = 9.5,
+                            ReleaseDate = new DateTime(2008, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Breaking Bad"
                         },
                         new
                         {
-                            Id = 2003,
-                            Rating = 5.2000000000000002,
-                            ReleaseDate = new DateTime(2021, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 3,
+                            Description = "Six friends navigate life in NYC",
+                            Rating = 8.9000000000000004,
+                            ReleaseDate = new DateTime(1994, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Friends"
                         },
                         new
                         {
-                            Id = 2004,
-                            Rating = 9.5,
-                            ReleaseDate = new DateTime(2020, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Modern Family"
+                            Id = 4,
+                            Description = "Star Wars bounty hunter saga",
+                            Rating = 8.6999999999999993,
+                            ReleaseDate = new DateTime(2019, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "The Mandalorian"
                         });
                 });
 
@@ -526,53 +498,23 @@ namespace Tekever_Challenge.Migrations
                     b.HasData(
                         new
                         {
-                            TvShowId = 2001,
-                            ActorId = 5
-                        },
-                        new
-                        {
-                            TvShowId = 2001,
+                            TvShowId = 1,
                             ActorId = 1
                         },
                         new
                         {
-                            TvShowId = 2002,
-                            ActorId = 5
-                        },
-                        new
-                        {
-                            TvShowId = 2002,
-                            ActorId = 1
-                        },
-                        new
-                        {
-                            TvShowId = 2003,
+                            TvShowId = 2,
                             ActorId = 2
                         },
                         new
                         {
-                            TvShowId = 2003,
-                            ActorId = 1
-                        },
-                        new
-                        {
-                            TvShowId = 2003,
-                            ActorId = 5
-                        },
-                        new
-                        {
-                            TvShowId = 2004,
-                            ActorId = 2
-                        },
-                        new
-                        {
-                            TvShowId = 2004,
-                            ActorId = 5
-                        },
-                        new
-                        {
-                            TvShowId = 2004,
+                            TvShowId = 3,
                             ActorId = 3
+                        },
+                        new
+                        {
+                            TvShowId = 4,
+                            ActorId = 4
                         });
                 });
 
@@ -593,28 +535,23 @@ namespace Tekever_Challenge.Migrations
                     b.HasData(
                         new
                         {
-                            TvShowId = 2001,
-                            GenreId = 105
+                            TvShowId = 1,
+                            GenreId = 1
                         },
                         new
                         {
-                            TvShowId = 2002,
-                            GenreId = 103
+                            TvShowId = 2,
+                            GenreId = 3
                         },
                         new
                         {
-                            TvShowId = 2003,
-                            GenreId = 105
+                            TvShowId = 3,
+                            GenreId = 2
                         },
                         new
                         {
-                            TvShowId = 2004,
-                            GenreId = 103
-                        },
-                        new
-                        {
-                            TvShowId = 2004,
-                            GenreId = 105
+                            TvShowId = 4,
+                            GenreId = 4
                         });
                 });
 
@@ -748,15 +685,6 @@ namespace Tekever_Challenge.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Tekever_Challenge.Models.Episode", b =>
-                {
-                    b.HasOne("Tekever_Challenge.Models.TvShow", null)
-                        .WithMany("Episodes")
-                        .HasForeignKey("TvShowId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Tekever_Challenge.Models.RefreshToken", b =>
                 {
                     b.HasOne("Tekever_Challenge.Models.User", "UserToken")
@@ -766,6 +694,28 @@ namespace Tekever_Challenge.Migrations
                         .IsRequired();
 
                     b.Navigation("UserToken");
+                });
+
+            modelBuilder.Entity("Tekever_Challenge.Models.Season", b =>
+                {
+                    b.HasOne("Tekever_Challenge.Models.TvShow", "TvShow")
+                        .WithMany("Seasons")
+                        .HasForeignKey("TvShowId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TvShow");
+                });
+
+            modelBuilder.Entity("Tekever_Challenge.Models.SeasonEpisode", b =>
+                {
+                    b.HasOne("Tekever_Challenge.Models.Season", "Season")
+                        .WithMany("Episodes")
+                        .HasForeignKey("SeasonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Season");
                 });
 
             modelBuilder.Entity("Tekever_Challenge.Models.TvShowActor", b =>
@@ -823,9 +773,14 @@ namespace Tekever_Challenge.Migrations
                     b.Navigation("TvShowGenres");
                 });
 
-            modelBuilder.Entity("Tekever_Challenge.Models.TvShow", b =>
+            modelBuilder.Entity("Tekever_Challenge.Models.Season", b =>
                 {
                     b.Navigation("Episodes");
+                });
+
+            modelBuilder.Entity("Tekever_Challenge.Models.TvShow", b =>
+                {
+                    b.Navigation("Seasons");
 
                     b.Navigation("TvShowActors");
 
