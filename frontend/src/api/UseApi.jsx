@@ -7,27 +7,13 @@ const getAuthHeaders = () => ({
 });
 
 // Auth
-export const login = async (email, password) => {
-    const response = await axios.post("/api/auth/login", {
-        email,
-        password,
-    });
+export const login = async (data) => {
+    const response = await axios.post("/api/Auth/login", data);
     return response.data;
 };
 
-export const register = async ({
-    username,
-    email,
-    password,
-}) => {
-    const response = await axios.post(
-        "/api/auth/register",
-        {
-            username,
-            email,
-            password,
-        }
-    );
+export const register = async (data) => {
+    const response = await axios.post("/api/Auth/register", data);
     return response.data;
 };
 

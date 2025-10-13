@@ -39,7 +39,8 @@ export const AuthProvider = ({ children }) => {
                     });
 
                     setUser({
-                        id: payload.id,
+                        id: payload.userId,
+                        username: payload.username,
                         email: payload.email,
                     });
                 } else {
@@ -60,9 +61,9 @@ export const AuthProvider = ({ children }) => {
         loadUser();
     }, []);
 
-    const login = async (email, password) => {
+    const login = async (data) => {
         try {
-            const res = await apiLogin(email, password);
+            const res = await apiLogin(data);
 
             const accessToken = res.token;
             setToken(accessToken);
@@ -71,13 +72,16 @@ export const AuthProvider = ({ children }) => {
 
             const loginUser = await getCurrentUser();
 
+            console.log("loginUser: ", loginUser);
+
             const decodedToken = decodeToken(accessToken);
 
             console.log("Decoded: ", decodedToken);
 
             setUser({
-                id: decodedToken.id,
-                email: decodedToken.email,
+                id: loginUser.userId,
+                username: loginUser.username,
+                email: loginUser.email,
             });
 
             return true;

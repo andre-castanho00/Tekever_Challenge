@@ -1,24 +1,54 @@
-import { getGenres } from "../../api/UseApi";
+import { useState, useContext, useEffect } from "react";
+import AuthContext from "../../AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-    const fetchGenres = async () => {
-        try {
-            const data = await getGenres();
-            console.log(data);
-        } catch (error) {
-            console.error("Failed to fetch:", error);
-        }
-    };
+    const { login, user } = useContext(AuthContext);
+    const [loginForm, setLoginForm] = useState({
+        email: "",
+        password: "",
+    });
+    const navigate = useNavigate();
 
-    const handleClick = (e) => {
+    useEffect(() => {
+        if (user) { 
+            navigate("/home");
+        }
+    }, [user, navigate]);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        fetchGenres();
+        await login(loginForm);
     }
+
     return (
         <div>
             <div>Login Page</div>
-            <button onClick={handleClick}>Click</button>
+
+            <form action="" onSubmit={handleSubmit}>
+                <label htmlFor="">Email</label>
+                <input type="email"
+                    placeholder="Enter email"
+                    value={loginForm.email}
+                    required
+                    onChange={(e) => {
+                        setLoginForm({ ...loginForm, email: e.target.value })
+                    }}
+                />
+
+                <label htmlFor="">Password</label>
+                <input type="password"
+                    placeholder="Enter password"
+                    value={loginForm.password}
+                    required
+                    onChange={(e) => {
+                        setLoginForm({ ...loginForm, password: e.target.value })
+                    }}
+                />
+
+                <input type="submit" value="Login" />
+            </form>
         </div>
     );
 }

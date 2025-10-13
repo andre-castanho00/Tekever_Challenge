@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import AuthContext from "./AuthContext"
 import Page404 from "./pages/Page404";
+import { Navigate } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
