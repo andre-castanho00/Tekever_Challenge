@@ -1,10 +1,10 @@
 header {
-    background: #ff704c;
+    background: var(--primary-color);
     box-shadow: 0 2px 10px var(--shadow-hover);
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 1000;
+    z-index: 990;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     height: 60px;
     display: flex;
@@ -17,4 +17,13 @@ header {
     justify-content: space-between;
     padding: 0px 150px;
     color: white;
+}
+
+.header-btns {
+    display: flex;
+    gap: 20px;
+}
+
+.header-btns button:hover {
+    cursor: pointer;
 }

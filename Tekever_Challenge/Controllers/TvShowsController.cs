@@ -22,7 +22,7 @@ namespace Tekever_Challenge.Controllers
         {
             var shows = await _context.TvShows
                 .Include(show => show.Seasons)
-                    .ThenInclude(season => season.Episodes)
+                    // .ThenInclude(season => season.Episodes)
                 .Include(show => show.TvShowGenres)
                 .Include(show => show.TvShowActors)
                 .ToListAsync();
@@ -49,7 +49,7 @@ namespace Tekever_Challenge.Controllers
             return Ok(shows);
         }
 
-        [HttpGet("showEpisodes")]
+        [HttpGet("episodes")]
         public async Task<IActionResult> GetShowEpisodes(int showId)
         {
             var episodes = await _context.SeasonEpisodes
@@ -58,7 +58,25 @@ namespace Tekever_Challenge.Controllers
             return Ok(episodes);
         }
 
-        [HttpGet("showSeasons")]
+        [HttpGet("details")]
+        public async Task<IActionResult> GetShowDetails(int showId)
+        {
+            var details = await _context.TvShows
+                .Where(show => show.Id == showId)
+                .Include(show => show.Seasons)
+                .Include(show => show.TvShowGenres)
+                    .ThenInclude(tg => tg.Genre)          // include Genre object for each TvShowGenre
+                .Include(show => show.TvShowActors)
+                    .ThenInclude(ta => ta.Actor)          // include Actor object for each TvShowActor
+                .FirstOrDefaultAsync();                    // single show instead of a list
+
+            if (details == null)
+                return NotFound($"No TV show found with ID {showId}");
+
+            return Ok(details);
+        }
+
+        [HttpGet("seasons")]
         public async Task<IActionResult> GetShowSeasons(int showId)
         {
             var seasons = await _context.Seasons

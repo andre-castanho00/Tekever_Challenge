@@ -10,9 +10,8 @@ import Home from "../pages/Home";
 const AppRouter = () => {
     return (
         <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-
+            {/* <Route path="/" element={<Home />} /> */}
+            {/* 
             <Route path="/home"
                 element={
                     // <PrivateRoute>
@@ -20,7 +19,19 @@ const AppRouter = () => {
                     // </PrivateRoute>
                     <Home />
                 }
-            />
+            /> */}
+
+            <Route path="/home"
+                element={<Home />}
+            >
+                <Route path="login"
+                    element={<Login />}
+                />
+
+                <Route path="register"
+                    element={<Register />}
+                />
+            </Route>
 
             {/* ======================== */}
             {/* NOT FOUND PAGES */}

@@ -91,7 +91,13 @@ namespace Tekever_Challenge.Data
                 new TvShowActor { TvShowId = 1, ActorId = 1 },
                 new TvShowActor { TvShowId = 2, ActorId = 2 },
                 new TvShowActor { TvShowId = 3, ActorId = 3 },
-                new TvShowActor { TvShowId = 4, ActorId = 4 }
+                new TvShowActor { TvShowId = 4, ActorId = 4 },
+                new TvShowActor { TvShowId = 1, ActorId = 4 },
+                new TvShowActor { TvShowId = 2, ActorId = 1 },
+                new TvShowActor { TvShowId = 3, ActorId = 2 }, 
+                new TvShowActor { TvShowId = 4, ActorId = 3 },
+                new TvShowActor { TvShowId = 2, ActorId = 4 }, 
+                new TvShowActor { TvShowId = 1, ActorId = 2 }  
             );
 
             // === Seasons ===

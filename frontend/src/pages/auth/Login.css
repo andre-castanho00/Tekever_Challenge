@@ -1,0 +1,56 @@
+.background {
+    position: fixed;
+    /* key */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    z-index: 999;
+    /* make sure it's above everything */
+}
+
+.form-container {
+    background: #333;
+    padding: 2rem 2.5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    color: white;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.spacing {
+    gap: 20px;
+}
+
+.inputs {
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    padding: 5px 10px;
+    font-size: 18px;
+}
+
+.btn {
+    height: 40px;
+}
+
+.close-btn {
+    padding: 5px;
+    cursor: pointer;
+    font-size: 25px;
+}

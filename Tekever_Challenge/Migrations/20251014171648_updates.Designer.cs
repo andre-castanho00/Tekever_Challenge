@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tekever_Challenge.Data;
 
@@ -10,9 +11,11 @@ using Tekever_Challenge.Data;
 namespace Tekever_Challenge.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20251014171648_updates")]
+    partial class updates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -512,36 +515,6 @@ namespace Tekever_Challenge.Migrations
                         {
                             TvShowId = 4,
                             ActorId = 4
-                        },
-                        new
-                        {
-                            TvShowId = 1,
-                            ActorId = 4
-                        },
-                        new
-                        {
-                            TvShowId = 2,
-                            ActorId = 1
-                        },
-                        new
-                        {
-                            TvShowId = 3,
-                            ActorId = 2
-                        },
-                        new
-                        {
-                            TvShowId = 4,
-                            ActorId = 3
-                        },
-                        new
-                        {
-                            TvShowId = 2,
-                            ActorId = 4
-                        },
-                        new
-                        {
-                            TvShowId = 1,
-                            ActorId = 2
                         });
                 });
 
