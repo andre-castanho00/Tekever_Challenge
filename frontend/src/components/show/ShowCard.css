@@ -8,7 +8,6 @@
 }
 
 .card-container:hover {
-    cursor: pointer;
     transform: scale(1.05);
 }
 
@@ -30,4 +29,61 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+/*** FAVORITE BUTTON ***/
+/* From Uiverse.io by LilaRest */
+.favorite {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 6px 5px 6px;
+    background-color: #e8e8e8;
+    border: none;
+    border-style: solid;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    word-spacing: -2px;
+    margin: 5px;
+    cursor: pointer;
+
+    display: none;
+}
+
+.favorite:hover {
+    background-color: #eee;
+}
+
+.filled,
+.empty {
+    fill: #E4332F;
+    transition: opacity 200ms ease-in-out;
+}
+
+.filled {
+    position: absolute;
+    opacity: 0;
+}
+
+.filled .favorited {
+    position: absolute;
+    opacity: 1;
+}
+
+.favorite:hover .empty {
+    opacity: 0;
+}
+
+.favorite:hover .filled {
+    opacity: 1;
+}
+
+.card-container:hover .favorite {
+    display: flex;
+    /* show on hover */
+}
+
+.favorited {
+    opacity: 1;
 }

@@ -4,3 +4,8 @@
     /* 5 columns */
     gap: 50px
 }
+
+.react-select {
+    color: black;
+    max-width: 225px;
+}

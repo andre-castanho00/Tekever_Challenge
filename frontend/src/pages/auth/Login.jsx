@@ -28,7 +28,7 @@ function Login() {
             <div className="form-container">
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingBottom: "10px" }}>
                     <h3>Please Login</h3>
-                    <div className="close-btn" onClick={() => navigate("/")}>x</div>
+                    <div className="close-btn" onClick={() => navigate("/home")}>x</div>
                 </div>
 
                 <form className="flex-column spacing" onSubmit={handleSubmit}>

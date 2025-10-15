@@ -76,6 +76,31 @@ namespace Tekever_Challenge.Controllers
             return Ok(details);
         }
 
+        [HttpGet("detailsByName/{name}")]
+        public async Task<IActionResult> GetShowDetailsByName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return BadRequest("Show name must be provided.");
+
+            var formattedName = name.Replace("+", " ").Trim();
+
+            var show = await _context.TvShows
+                .Where(show => show.Title.ToLower() == formattedName.ToLower())
+                .Include(show => show.Seasons)
+                    .ThenInclude(season => season.Episodes)
+                .Include(show => show.TvShowGenres)
+                    .ThenInclude(tg => tg.Genre)
+                .Include(show => show.TvShowActors)
+                    .ThenInclude(ta => ta.Actor)
+                .FirstOrDefaultAsync();
+
+            if (show == null)
+                return NotFound($"No TV show found with the name '{formattedName}'.");
+
+            return Ok(show);
+        }
+
+
         [HttpGet("seasons")]
         public async Task<IActionResult> GetShowSeasons(int showId)
         {

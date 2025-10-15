@@ -4,5 +4,14 @@
   font-weight: 400;
 
   --primary-color: #0290DC;
+  --background-color: #555;
+  --accent-color: #333;
 }
 
+.page-layout {
+  padding: 80px 150px;
+}
+
+.divider {
+  border: 2px solid var(--background-color);
+}

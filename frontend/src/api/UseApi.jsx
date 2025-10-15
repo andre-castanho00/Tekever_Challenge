@@ -14,7 +14,7 @@ export const login = async (data) => {
 
 export const register = async (data) => {
     const response = await axios.post("/api/Auth/register", data);
-    return response.data;
+    return response;
 };
 
 // Users
@@ -28,6 +28,36 @@ export const getCurrentUser = async () => {
 // Others
 export const getGenres = async () => {
     const response = await axios.get("/api/TvShows/genres");
+
+    return response.data;
+};
+
+export const getShowByTitle = async (title) => {
+    const response = await axios.get(`/api/TvShows/detailsByName/${title}`, {
+        headers: getAuthHeaders(),
+    });
+
+    return response.data;
+};
+
+export const getAllShows = async () => {
+    const response = await axios.get(`/api/TvShows/shows`);
+
+    return response.data;
+};
+
+export const getActorById = async (actorId) => {
+    const response = await axios.get(`/api/actors/details/${actorId}`, {
+        headers: getAuthHeaders(),
+    });
+
+    return response.data;
+};
+
+export const getUserFavorites = async () => {
+    const response = await axios.get("/api/users/favorites", {
+        headers: getAuthHeaders(),
+    });
 
     return response.data;
 };

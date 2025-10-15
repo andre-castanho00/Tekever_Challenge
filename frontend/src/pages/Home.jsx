@@ -1,44 +1,46 @@
 import "./Home.css";
 import Header from "../components/header/Header";
 import ShowCard from "../components/show/ShowCard";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getAllShows } from "../api/UseApi";
+import Select from "react-select";
+import { ToastContainer, toast } from "react-toastify";
 
 function Home() {
-    const tvShows = [
-        {
-            id: 1,
-            title: "Breaking Bad",
-            rating: 9.5,
-            date: 2008
-        },
-        {
-            id: 2,
-            title: "Stranger Things",
-            rating: 8.7,
-            date: 2016
-        },
-        {
-            id: 3,
-            title: "The Office",
-            rating: 9.0,
-            date: 2005
-        },
-        {
-            id: 4,
-            title: "Game of Thrones",
-            rating: 9.3,
-            date: 2011
-        },
-        {
-            id: 5,
-            title: "The Mandalorian",
-            rating: 8.6,
-            date: 2019
-        }
+    const options = [
+        { value: 'default', label: 'Sort by' },
+        { value: 'title-asc', label: 'Title A–Z' },
+        { value: 'title-desc', label: 'Title Z–A' },
+        { value: 'rating-asc', label: 'Rating Low–High' },
+        { value: 'rating-desc', label: 'Rating High–Low' },
+        { value: 'year-asc', label: 'Year Old–New' },
+        { value: 'year-desc', label: 'Year New–Old' },
     ];
 
-    const [shows, setShows] = useState(tvShows);
+    const { state } = useLocation();
+    console.log(state);
+
+    const [shows, setShows] = useState();
+
+    useEffect(() => {
+        fetchAllShows();
+    }, []);
+
+    useEffect(() => {
+        if (state) {
+            toast.info(state);
+        }
+    }, [state]);
+
+    const fetchAllShows = () => {
+        getAllShows()
+            .then((res) => {
+                console.log(res);
+                setShows(res);
+            })
+            .catch((error) => console.error("Error: ", error));
+    }
 
     const sortShows = (criteria) => {
         const sorted = [...shows].sort((a, b) => {
@@ -52,9 +54,9 @@ function Home() {
                 case "rating-desc":
                     return b.rating - a.rating;
                 case "year-asc":
-                    return a.date - b.date;
+                    return new Date(a.releaseDate) - new Date(b.releaseDate);
                 case "year-desc":
-                    return b.date - a.date;
+                    return new Date(b.releaseDate) - new Date(a.releaseDate);
                 default:
                     return 0;
             }
@@ -63,38 +65,32 @@ function Home() {
         setShows(sorted);
     };
 
-    const handleSortChange = (e) => {
-        sortShows(e.target.value);
-    };
-
     return (
         <>
             <Header />
-            <div style={{ padding: "80px 150px" }}>
+            <div className="page-layout">
                 <h1>TV Shows</h1>
 
                 <hr />
 
-                <div>
-                    <select onChange={handleSortChange} defaultValue={"default"}>
-                        <option value="default" disabled>Sort by ...</option>
-                        <option value="asc">Title A–Z</option>
-                        <option value="desc">Title Z–A</option>
-                        <option value="rating-asc">Rating Low–High</option>
-                        <option value="rating-desc">Rating High–Low</option>
-                        <option value="year-asc">Year Old–New</option>
-                        <option value="year-desc">Year New–Old</option>
-                    </select>
+                <div className="react-select">
+                    <Select
+                        defaultValue={options[0]}
+                        onChange={(selectedOption) => sortShows(selectedOption.value)}
+                        options={options}
+                    />
                 </div>
 
                 <hr />
 
                 <div className="shows-grid">
-                    {shows.map(s => (
+                    {shows?.map(s => (
                         <ShowCard show={s} key={s.id} />
                     ))}
                 </div>
             </div>
+
+            <ToastContainer />
             <Outlet />
         </>
     );

@@ -15,7 +15,7 @@ const PrivateRoute = ({ children }) => {
     }
 
     if (!user) {
-        return <Navigate to="/" />;
+        return <Navigate to="/home" />;
     }
 
     // if (!hasAnyRole(allowedRoles)) {

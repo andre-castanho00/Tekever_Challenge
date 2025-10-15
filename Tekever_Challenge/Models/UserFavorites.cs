@@ -10,6 +10,6 @@ namespace Tekever_Challenge.Models
 
         [ForeignKey("TvShow")]
         public int TvShowId { get; set; }
-        //public TvShow TvShow { get; set; }
+        public TvShow TvShow { get; set; }
     }
 }

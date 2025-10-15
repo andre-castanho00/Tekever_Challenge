@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getCurrentUser, login as apiLogin } from "./api/UseApi";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -17,7 +18,7 @@ export const AuthProvider = ({ children }) => {
         setToken(null);
         setUser(null);
         localStorage.removeItem("token");
-        navigate("/home");
+        navigate("/home", {state: "Logout successful"});
     };
 
     useEffect(() => {
@@ -46,12 +47,12 @@ export const AuthProvider = ({ children }) => {
                 } else {
                     console.log("No payload received, logging out");
                     logout();
-                    // toast.warning("Session expired, please login again");
+                    toast.warning("Session expired, please login again");
                 }
             } catch (error) {
                 console.error("Error loading user:", error);
                 logout();
-                // toast.warning("Session expired, please login again");
+                toast.warning("Session expired, please login again");
             } finally {
                 console.log("Loading complete, setting loading to false");
                 setLoading(false);
@@ -72,11 +73,7 @@ export const AuthProvider = ({ children }) => {
 
             const loginUser = await getCurrentUser();
 
-            console.log("loginUser: ", loginUser);
-
-            const decodedToken = decodeToken(accessToken);
-
-            console.log("Decoded: ", decodedToken);
+            // console.log("loginUser: ", loginUser);
 
             setUser({
                 id: loginUser.userId,
@@ -87,26 +84,8 @@ export const AuthProvider = ({ children }) => {
             return true;
         } catch (error) {
             console.error("Login error:", error);
-            // toast.error(error.response?.data?.message || "Login failed");
+            toast.error(error.response?.data?.message || "Login failed");
             return false;
-        }
-    };
-
-    const decodeToken = (token) => {
-        try {
-            const base64Url = token.split(".")[1];
-            const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-            const jsonPayload = decodeURIComponent(
-                window
-                    .atob(base64)
-                    .split("")
-                    .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
-                    .join("")
-            );
-            return JSON.parse(jsonPayload);
-        } catch (error) {
-            console.error(error);
-            return null;
         }
     };
 

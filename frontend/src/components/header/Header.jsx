@@ -1,21 +1,33 @@
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../../AuthContext";
 
 const Header = () => {
     const navigate = useNavigate();
+    const { user, logout } = useContext(AuthContext);
+
     return (
         <header>
             <div className="nav">
-                <h2>Challenge</h2>
+                <h2 style={{ cursor: "pointer" }} onClick={() => navigate("/home")}>Challenge</h2>
 
-                <p>Searchbar</p>
+                <input className="searchbar" type="text" placeholder="Search TvShow ..." name="" id="" />
 
                 <div className="header-btns">
-                    <button>Register</button>
-                    <button onClick={() => navigate("/home/login")}>Login</button>
+                    {user?.username ? (
+                        <>
+                            <button onClick={() => navigate("/profile")}>{user.username}</button>
+                            <button onClick={() => logout()}>Logout</button>
+                        </>
+                    ) : (
+                        <>
+                            <button onClick={() => navigate("/home/register")}>Register</button>
+                            <button onClick={() => navigate("/home/login")}>Login</button>
+                        </>
+                    )}
                 </div>
             </div>
-
         </header>
     );
 }

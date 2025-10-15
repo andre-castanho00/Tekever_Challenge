@@ -35,8 +35,8 @@ namespace Tekever_Challenge.Controllers
         //    return Ok(actors);
         //}
 
-        [HttpGet("details")]
-        public async Task<IActionResult> GetActorDetails([FromBody]int actorId)
+        [HttpGet("details/{actorId}")]
+        public async Task<IActionResult> GetActorDetails(int actorId)
         {
             var details = await _context.Actors
                 .Where(a => a.Id == actorId)
