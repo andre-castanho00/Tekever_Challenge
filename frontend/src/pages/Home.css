@@ -1,7 +1,6 @@
 .shows-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    /* 5 columns */
+    grid-template-columns: repeat(6, 1fr);
     gap: 50px
 }
 

@@ -61,3 +61,27 @@ export const getUserFavorites = async () => {
 
     return response.data;
 };
+
+export const addShowToFavorites = async (tvshowid) => {
+    const response = await axios.post(
+        `/api/users/favorites/add/${tvshowid}`,
+        {},
+        { headers: getAuthHeaders() }
+    );
+    return response.data;
+};
+
+export const removeShowFromFavorites = async (tvshowid) => {
+    const response = await axios.delete(
+        `/api/users/favorites/remove/${tvshowid}`,
+        { headers: getAuthHeaders() }
+    );
+    return response.data;
+};
+
+export const getShowsRecommendations = async () => {
+    const response = await axios.get("/api/users/recommendations", {
+        headers: getAuthHeaders(),
+    });
+    return response.data;
+};

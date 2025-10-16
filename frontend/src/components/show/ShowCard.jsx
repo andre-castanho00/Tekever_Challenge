@@ -2,46 +2,45 @@ import "./ShowCard.css";
 import { useNavigate } from "react-router-dom";
 import { getYear } from "../../utils/Utils";
 import { useState, useEffect } from "react";
-import { getUserFavorites } from "../../api/UseApi";
+import { addShowToFavorites, getUserFavorites, removeShowFromFavorites } from "../../api/UseApi";
+import { toast } from "react-toastify";
 
-function ShowCard({ show }) {
+function ShowCard({ show, favorites, setFavorites }) {
     const navigate = useNavigate();
-    const [favorites, setFavorites] = useState();
-
-    useEffect(() => {
-        fetchUserFavorites();
-    }, []);
-
-    const fetchUserFavorites = () => {
-        getUserFavorites()
-            .then((res) => {
-                console.log("Favorites", res);
-                console.log(show.id)
-                setFavorites(res);
-            })
-            .catch((error) => {
-                console.error("Error: ", error);
-            });
-    }
 
     const formatString = (str) => {
         return str.toLowerCase().replace(/\s+/g, "+");
     }
 
-    // Check if this show is a favorite
     const isFavorite = favorites?.some((fav) => fav.id === show.id);
+
+    const handleFavorite = async (e) => {
+        e.stopPropagation();
+
+        try {
+            if (isFavorite) {
+                await removeShowFromFavorites(show.id);
+                setFavorites(prev => prev.filter(aux => aux.id !== show.id))
+                toast.success("Show removed from favorites");
+            } else {
+                await addShowToFavorites(show.id)
+                setFavorites(prev => [...prev, show]);
+                toast.success("Show added to favorites");
+            }
+        } catch (error) {
+            console.log("Failed to update favorites", error);
+            toast.error("Failed to update favorites");
+        }
+    }
 
     const renderIsFavorite = () => {
         return (
             <button
                 className="favorite"
-                onClick={(e) => {
-                    e.stopPropagation(); // Prevent navigating to the show
-                    console.log(isFavorite ? "Remove from favorites" : "Add to favorites");
-                }}
+                onClick={handleFavorite}
             >
                 <svg
-                    className={`empty`}
+                    className={`${isFavorite ? "filled" : "empty"}`}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     width="32"
@@ -52,7 +51,7 @@ function ShowCard({ show }) {
                 </svg>
 
                 <svg
-                    className={`filled ${isFavorite ? "favorited" : ""}`}
+                    className={`${isFavorite ? "empty" : "filled"}`}
                     height="32"
                     width="32"
                     viewBox="0 0 24 24"

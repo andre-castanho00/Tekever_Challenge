@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Tekever_Challenge.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -408,7 +408,18 @@ namespace Tekever_Challenge.Migrations
                     { 1, null, "Cillian Murphy" },
                     { 2, null, "Bryan Cranston" },
                     { 3, null, "Jennifer Aniston" },
-                    { 4, null, "Pedro Pascal" }
+                    { 4, null, "Pedro Pascal" },
+                    { 5, null, "Millie Bobby Brown" },
+                    { 6, null, "Henry Cavill" },
+                    { 7, null, "Emma D'Arcy" },
+                    { 8, null, "Tom Hiddleston" },
+                    { 9, null, "Anya Taylor-Joy" },
+                    { 10, null, "Matthew McConaughey" },
+                    { 11, null, "Zendaya" },
+                    { 12, null, "Rami Malek" },
+                    { 13, null, "Elizabeth Olsen" },
+                    { 14, null, "Kit Harington" },
+                    { 15, null, "Oscar Isaac" }
                 });
 
             migrationBuilder.InsertData(
@@ -419,7 +430,11 @@ namespace Tekever_Challenge.Migrations
                     { 1, "Drama" },
                     { 2, "Comedy" },
                     { 3, "Action" },
-                    { 4, "Sci-Fi" }
+                    { 4, "Sci-Fi" },
+                    { 5, "Thriller" },
+                    { 6, "Fantasy" },
+                    { 7, "Crime" },
+                    { 8, "Adventure" }
                 });
 
             migrationBuilder.InsertData(
@@ -430,7 +445,23 @@ namespace Tekever_Challenge.Migrations
                     { 1, "British crime drama", 9.0999999999999996, new DateTime(2013, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Peaky Blinders" },
                     { 2, "Chemistry teacher turns to crime", 9.5, new DateTime(2008, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Breaking Bad" },
                     { 3, "Six friends navigate life in NYC", 8.9000000000000004, new DateTime(1994, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Friends" },
-                    { 4, "Star Wars bounty hunter saga", 8.6999999999999993, new DateTime(2019, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "The Mandalorian" }
+                    { 4, "Star Wars bounty hunter saga", 8.6999999999999993, new DateTime(2019, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "The Mandalorian" },
+                    { 5, "A monster hunter struggles with his destiny", 8.1999999999999993, new DateTime(2019, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "The Witcher" },
+                    { 6, "Noble families vie for control of Westeros", 9.3000000000000007, new DateTime(2011, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), "Game of Thrones" },
+                    { 7, "A group of kids uncover supernatural mysteries", 8.9000000000000004, new DateTime(2016, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Stranger Things" },
+                    { 8, "God of Mischief faces the TVA", 8.4000000000000004, new DateTime(2021, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Loki" },
+                    { 9, "Chess prodigy battles addiction and rivals", 8.5999999999999996, new DateTime(2020, 10, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "The Queen’s Gambit" },
+                    { 10, "Targaryen civil war begins", 8.8000000000000007, new DateTime(2022, 8, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "House of the Dragon" },
+                    { 11, "Hacker tries to take down corporate America", 8.5999999999999996, new DateTime(2015, 6, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mr. Robot" },
+                    { 12, "Teens navigate love and addiction", 8.4000000000000004, new DateTime(2019, 6, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), "Euphoria" },
+                    { 13, "A group of vigilantes fight corrupt superheroes", 8.9000000000000004, new DateTime(2019, 7, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "The Boys" },
+                    { 14, "Superhero sitcom blending reality and fantasy", 8.0, new DateTime(2021, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "WandaVision" },
+                    { 15, "Detectives uncover dark truths", 9.0, new DateTime(2014, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "True Detective" },
+                    { 16, "A lawyer's descent into moral ambiguity", 8.9000000000000004, new DateTime(2015, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Better Call Saul" },
+                    { 17, "The story of Pablo Escobar and the DEA", 8.8000000000000007, new DateTime(2015, 8, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), "Narcos" },
+                    { 18, "A sci-fi political thriller set in space", 8.5, new DateTime(2015, 12, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "The Expanse" },
+                    { 19, "Survivors navigate a post-apocalyptic world", 9.1999999999999993, new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "The Last of Us" },
+                    { 20, "Modern adaptation of Sherlock Holmes", 9.0999999999999996, new DateTime(2010, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sherlock" }
                 });
 
             migrationBuilder.InsertData(
@@ -441,8 +472,30 @@ namespace Tekever_Challenge.Migrations
                     { 1, new DateTime(2013, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1 },
                     { 2, new DateTime(2014, 10, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 1 },
                     { 3, new DateTime(2008, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 2 },
-                    { 4, new DateTime(1994, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 3 },
-                    { 5, new DateTime(2019, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 4 }
+                    { 4, new DateTime(2009, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 2 },
+                    { 5, new DateTime(1994, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 3 },
+                    { 6, new DateTime(1995, 9, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 3 },
+                    { 7, new DateTime(2019, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 4 },
+                    { 8, new DateTime(2019, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 5 },
+                    { 9, new DateTime(2021, 12, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 5 },
+                    { 10, new DateTime(2011, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 6 },
+                    { 11, new DateTime(2012, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 6 },
+                    { 12, new DateTime(2016, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 7 },
+                    { 13, new DateTime(2017, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 7 },
+                    { 14, new DateTime(2021, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8 },
+                    { 15, new DateTime(2020, 10, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 9 },
+                    { 16, new DateTime(2022, 8, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 10 },
+                    { 17, new DateTime(2015, 6, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 11 },
+                    { 18, new DateTime(2019, 6, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 12 },
+                    { 19, new DateTime(2019, 7, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 13 },
+                    { 20, new DateTime(2021, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 14 },
+                    { 21, new DateTime(2014, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 15 },
+                    { 22, new DateTime(2015, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 16 },
+                    { 23, new DateTime(2015, 8, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 17 },
+                    { 24, new DateTime(2015, 12, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 18 },
+                    { 25, new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 19 },
+                    { 26, new DateTime(2010, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 20 },
+                    { 27, new DateTime(2011, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 20 }
                 });
 
             migrationBuilder.InsertData(
@@ -451,9 +504,39 @@ namespace Tekever_Challenge.Migrations
                 values: new object[,]
                 {
                     { 1, 1 },
+                    { 14, 1 },
                     { 2, 2 },
+                    { 12, 2 },
                     { 3, 3 },
-                    { 4, 4 }
+                    { 13, 3 },
+                    { 4, 4 },
+                    { 8, 4 },
+                    { 6, 5 },
+                    { 9, 5 },
+                    { 6, 6 },
+                    { 14, 6 },
+                    { 5, 7 },
+                    { 11, 7 },
+                    { 8, 8 },
+                    { 15, 8 },
+                    { 9, 9 },
+                    { 10, 9 },
+                    { 7, 10 },
+                    { 14, 10 },
+                    { 12, 11 },
+                    { 3, 12 },
+                    { 11, 12 },
+                    { 2, 13 },
+                    { 15, 13 },
+                    { 13, 14 },
+                    { 10, 15 },
+                    { 2, 16 },
+                    { 15, 17 },
+                    { 15, 18 },
+                    { 4, 19 },
+                    { 5, 19 },
+                    { 1, 20 },
+                    { 10, 20 }
                 });
 
             migrationBuilder.InsertData(
@@ -462,9 +545,45 @@ namespace Tekever_Challenge.Migrations
                 values: new object[,]
                 {
                     { 1, 1 },
-                    { 3, 2 },
+                    { 3, 1 },
+                    { 7, 1 },
+                    { 1, 2 },
+                    { 7, 2 },
                     { 2, 3 },
-                    { 4, 4 }
+                    { 8, 3 },
+                    { 4, 4 },
+                    { 8, 4 },
+                    { 3, 5 },
+                    { 6, 5 },
+                    { 5, 6 },
+                    { 6, 6 },
+                    { 1, 7 },
+                    { 4, 7 },
+                    { 2, 8 },
+                    { 4, 8 },
+                    { 1, 9 },
+                    { 5, 9 },
+                    { 5, 10 },
+                    { 6, 10 },
+                    { 1, 11 },
+                    { 5, 11 },
+                    { 1, 12 },
+                    { 3, 13 },
+                    { 5, 13 },
+                    { 2, 14 },
+                    { 4, 14 },
+                    { 1, 15 },
+                    { 7, 15 },
+                    { 1, 16 },
+                    { 7, 16 },
+                    { 1, 17 },
+                    { 7, 17 },
+                    { 4, 18 },
+                    { 8, 18 },
+                    { 1, 19 },
+                    { 8, 19 },
+                    { 5, 20 },
+                    { 7, 20 }
                 });
 
             migrationBuilder.InsertData(
@@ -477,9 +596,43 @@ namespace Tekever_Challenge.Migrations
                     { 3, new DateTime(2014, 10, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.9000000000000004, 2, "Episode 1" },
                     { 4, new DateTime(2008, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 9.0, 3, "Pilot" },
                     { 5, new DateTime(2008, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 8.6999999999999993, 3, "Cat's in the Bag..." },
-                    { 6, new DateTime(1994, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.3000000000000007, 4, "The One Where It All Began" },
-                    { 7, new DateTime(2019, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.9000000000000004, 5, "Chapter 1: The Mandalorian" },
-                    { 8, new DateTime(2019, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 8.8000000000000007, 5, "Chapter 2: The Child" }
+                    { 6, new DateTime(2009, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 9.0999999999999996, 4, "Season 2 Premiere" },
+                    { 7, new DateTime(1994, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.3000000000000007, 5, "The One Where It All Began" },
+                    { 8, new DateTime(1994, 9, 29, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 8.4000000000000004, 5, "The One with the Sonogram" },
+                    { 9, new DateTime(1995, 9, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.5, 6, "Season 2 Premiere" },
+                    { 10, new DateTime(2019, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.9000000000000004, 7, "Chapter 1: The Mandalorian" },
+                    { 11, new DateTime(2019, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 8.8000000000000007, 7, "Chapter 2: The Child" },
+                    { 12, new DateTime(2019, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.1999999999999993, 8, "Episode 1" },
+                    { 13, new DateTime(2019, 12, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 8.4000000000000004, 8, "Episode 2" },
+                    { 14, new DateTime(2021, 12, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.5, 9, "Episode 1" },
+                    { 15, new DateTime(2011, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 9.0, 10, "Episode 1" },
+                    { 16, new DateTime(2011, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 8.9000000000000004, 10, "Episode 2" },
+                    { 17, new DateTime(2012, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 9.0999999999999996, 11, "Episode 1" },
+                    { 18, new DateTime(2021, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.4000000000000004, 12, "Episode 1" },
+                    { 19, new DateTime(2021, 6, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 8.5999999999999996, 12, "Episode 2" },
+                    { 20, new DateTime(2021, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, 8.5, 12, "Episode 3" },
+                    { 21, new DateTime(2020, 10, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 7.7999999999999998, 13, "Episode 1" },
+                    { 22, new DateTime(2020, 10, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 7.9000000000000004, 13, "Episode 2" },
+                    { 23, new DateTime(2022, 8, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.0, 14, "Episode 1" },
+                    { 24, new DateTime(2022, 8, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 8.1999999999999993, 14, "Episode 2" },
+                    { 25, new DateTime(2022, 9, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, 8.0999999999999996, 14, "Episode 3" },
+                    { 26, new DateTime(2015, 6, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.3000000000000007, 15, "Episode 1" },
+                    { 27, new DateTime(2015, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 8.1999999999999993, 15, "Episode 2" },
+                    { 28, new DateTime(2019, 6, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.5, 16, "Episode 1" },
+                    { 29, new DateTime(2019, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 8.5999999999999996, 16, "Episode 2" },
+                    { 30, new DateTime(2019, 7, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 7.9000000000000004, 17, "Episode 1" },
+                    { 31, new DateTime(2019, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 8.0, 17, "Episode 2" },
+                    { 32, new DateTime(2021, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.0999999999999996, 18, "Episode 1" },
+                    { 33, new DateTime(2021, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 8.1999999999999993, 18, "Episode 2" },
+                    { 34, new DateTime(2014, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.0, 19, "Episode 1" },
+                    { 35, new DateTime(2014, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 8.0999999999999996, 19, "Episode 2" },
+                    { 36, new DateTime(2015, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 7.9000000000000004, 20, "Episode 1" },
+                    { 37, new DateTime(2015, 8, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.3000000000000007, 21, "Episode 1" },
+                    { 38, new DateTime(2015, 12, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.1999999999999993, 22, "Episode 1" },
+                    { 39, new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.4000000000000004, 23, "Episode 1" },
+                    { 40, new DateTime(2010, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 7.7999999999999998, 24, "Episode 1" },
+                    { 41, new DateTime(2010, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 7.9000000000000004, 24, "Episode 2" },
+                    { 42, new DateTime(2011, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 8.0, 25, "Episode 1" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -3,7 +3,7 @@ import Header from "../components/header/Header";
 import ShowCard from "../components/show/ShowCard";
 import { Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getAllShows } from "../api/UseApi";
+import { getAllShows, getUserFavorites } from "../api/UseApi";
 import Select from "react-select";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -19,12 +19,15 @@ function Home() {
     ];
 
     const { state } = useLocation();
-    console.log(state);
+    // console.log("state: ", state);
 
     const [shows, setShows] = useState();
+    const [filteredShows, setFilteredShows] = useState();
+    const [favorites, setFavorites] = useState();
 
     useEffect(() => {
         fetchAllShows();
+        fetchUserFavorites();
     }, []);
 
     useEffect(() => {
@@ -38,8 +41,20 @@ function Home() {
             .then((res) => {
                 console.log(res);
                 setShows(res);
+                setFilteredShows(res);
             })
             .catch((error) => console.error("Error: ", error));
+    }
+
+    const fetchUserFavorites = () => {
+        getUserFavorites()
+            .then((res) => {
+                console.log("Favorites", res);
+                setFavorites(res);
+            })
+            .catch((error) => {
+                console.error("Error: ", error);
+            });
     }
 
     const sortShows = (criteria) => {
@@ -85,7 +100,7 @@ function Home() {
 
                 <div className="shows-grid">
                     {shows?.map(s => (
-                        <ShowCard show={s} key={s.id} />
+                        <ShowCard show={s} key={s.id} favorites={favorites} setFavorites={setFavorites} />
                     ))}
                 </div>
             </div>
