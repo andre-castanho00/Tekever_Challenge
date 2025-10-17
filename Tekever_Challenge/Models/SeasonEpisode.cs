@@ -11,6 +11,7 @@ namespace Tekever_Challenge.Models
         public int EpisodeNumber { get; set; }
         public string Title { get; set; }
         public DateTime AirDate { get; set; }
+        public int Duration { get; set; }
         public double? Rating { get; set; }
 
         [ForeignKey("Season")]

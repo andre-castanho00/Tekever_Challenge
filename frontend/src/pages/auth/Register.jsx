@@ -15,10 +15,10 @@ function Register() {
         e.preventDefault();
 
         try {
-            console.log("Form: ", registerForm);
+            // console.log("Form: ", registerForm);
 
             const response = await register(registerForm);
-            console.log("Register response:", response);
+            // console.log("Register response:", response);
 
             // Adjust this check based on your API structure
             if (response.status === 201 || response.success) {

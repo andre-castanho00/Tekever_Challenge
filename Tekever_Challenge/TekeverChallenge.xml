@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Tekever_Challenge</name>
+    </assembly>
+    <members>
+        <member name="M:Tekever_Challenge.Controllers.AuthController.Register(Tekever_Challenge.Data.ViewModels.Auth.RegisterView)">
+            <summary>
+            Registers the user
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Tekever_Challenge.Migrations.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:Tekever_Challenge.Migrations.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Tekever_Challenge.Migrations.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Tekever_Challenge.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Tekever_Challenge.Migrations.EpisodesDuration">
+            <inheritdoc />
+        </member>
+        <member name="M:Tekever_Challenge.Migrations.EpisodesDuration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Tekever_Challenge.Migrations.EpisodesDuration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Tekever_Challenge.Migrations.EpisodesDuration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

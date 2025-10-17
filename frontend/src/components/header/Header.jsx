@@ -12,8 +12,6 @@ const Header = () => {
             <div className="nav">
                 <h2 style={{ cursor: "pointer" }} onClick={() => navigate("/home")}>Challenge</h2>
 
-                <input className="searchbar" type="text" placeholder="Search TvShow ..." name="" id="" />
-
                 <div className="header-btns">
                     {user?.username ? (
                         <>

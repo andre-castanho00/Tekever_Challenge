@@ -6,10 +6,12 @@
   --primary-color: #0290DC;
   --background-color: #555;
   --accent-color: #333;
+  --selected-color: #636363;
 }
 
 .page-layout {
   padding: 80px 150px;
+  padding-bottom: 30px !important;
 }
 
 .divider {

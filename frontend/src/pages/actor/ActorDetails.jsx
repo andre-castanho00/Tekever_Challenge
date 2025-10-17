@@ -22,7 +22,7 @@ function ActorDetails() {
     const fetchActorById = (actorId) => {
         getActorById(actorId)
             .then((res) => {
-                console.log("Actor details: ", res);
+                // console.log("Actor details: ", res);
                 setActor(res);
                 setActorShows(res.tvShows);
             })

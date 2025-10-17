@@ -32,6 +32,12 @@ export const getGenres = async () => {
     return response.data;
 };
 
+export const getShowsByGenre = async (genreId) => {
+    const response = await axios.get(`/api/TvShows/showsByGenre/${genreId}`);
+
+    return response.data;
+};
+
 export const getShowByTitle = async (title) => {
     const response = await axios.get(`/api/TvShows/detailsByName/${title}`, {
         headers: getAuthHeaders(),

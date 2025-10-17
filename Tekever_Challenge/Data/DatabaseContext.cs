@@ -277,87 +277,95 @@ namespace Tekever_Challenge.Data
 
         private void PopulateEpisodes(ModelBuilder modelBuilder)
         {
-            // === SeasonEpisodes ===
+            var random = new Random();
+
+            int RandDuration() => random.Next(35, 71);
+
             modelBuilder.Entity<SeasonEpisode>().HasData(
                 // Show 1
-                new SeasonEpisode { Id = 1, SeasonId = 1, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2013, 9, 12), Rating = 8.6 },
-                new SeasonEpisode { Id = 2, SeasonId = 1, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2013, 9, 19), Rating = 8.7 },
-                new SeasonEpisode { Id = 3, SeasonId = 2, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2014, 10, 2), Rating = 8.9 },
+                new SeasonEpisode { Id = 1, SeasonId = 1, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2013, 9, 12), Duration = 52, Rating = 8.6 },
+                new SeasonEpisode { Id = 2, SeasonId = 1, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2013, 9, 19), Duration = RandDuration(), Rating = 8.7 },
+                new SeasonEpisode { Id = 3, SeasonId = 2, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2014, 10, 2), Duration = RandDuration(), Rating = 8.9 },
 
                 // Show 2
-                new SeasonEpisode { Id = 4, SeasonId = 3, EpisodeNumber = 1, Title = "Pilot", AirDate = new DateTime(2008, 1, 20), Rating = 9.0 },
-                new SeasonEpisode { Id = 5, SeasonId = 3, EpisodeNumber = 2, Title = "Cat's in the Bag...", AirDate = new DateTime(2008, 1, 27), Rating = 8.7 },
-                new SeasonEpisode { Id = 6, SeasonId = 4, EpisodeNumber = 1, Title = "Season 2 Premiere", AirDate = new DateTime(2009, 3, 15), Rating = 9.1 },
+                new SeasonEpisode { Id = 4, SeasonId = 3, EpisodeNumber = 1, Title = "Pilot", AirDate = new DateTime(2008, 1, 20), Duration = RandDuration(), Rating = 9.0 },
+                new SeasonEpisode { Id = 5, SeasonId = 3, EpisodeNumber = 2, Title = "Cat's in the Bag...", AirDate = new DateTime(2008, 1, 27), Duration = RandDuration(), Rating = 8.7 },
+                new SeasonEpisode { Id = 6, SeasonId = 4, EpisodeNumber = 1, Title = "Season 2 Premiere", AirDate = new DateTime(2009, 3, 15), Duration = RandDuration(), Rating = 9.1 },
 
                 // Show 3
-                new SeasonEpisode { Id = 7, SeasonId = 5, EpisodeNumber = 1, Title = "The One Where It All Began", AirDate = new DateTime(1994, 9, 22), Rating = 8.3 },
-                new SeasonEpisode { Id = 8, SeasonId = 5, EpisodeNumber = 2, Title = "The One with the Sonogram", AirDate = new DateTime(1994, 9, 29), Rating = 8.4 },
-                new SeasonEpisode { Id = 9, SeasonId = 6, EpisodeNumber = 1, Title = "Season 2 Premiere", AirDate = new DateTime(1995, 9, 21), Rating = 8.5 },
+                new SeasonEpisode { Id = 7, SeasonId = 5, EpisodeNumber = 1, Title = "The One Where It All Began", AirDate = new DateTime(1994, 9, 22), Duration = RandDuration(), Rating = 8.3 },
+                new SeasonEpisode { Id = 8, SeasonId = 5, EpisodeNumber = 2, Title = "The One with the Sonogram", AirDate = new DateTime(1994, 9, 29), Duration = RandDuration(), Rating = 8.4 },
+                new SeasonEpisode { Id = 9, SeasonId = 6, EpisodeNumber = 1, Title = "Season 2 Premiere", AirDate = new DateTime(1995, 9, 21), Duration = RandDuration(), Rating = 8.5 },
 
                 // Show 4
-                new SeasonEpisode { Id = 10, SeasonId = 7, EpisodeNumber = 1, Title = "Chapter 1: The Mandalorian", AirDate = new DateTime(2019, 11, 12), Rating = 8.9 },
-                new SeasonEpisode { Id = 11, SeasonId = 7, EpisodeNumber = 2, Title = "Chapter 2: The Child", AirDate = new DateTime(2019, 11, 15), Rating = 8.8 },
+                new SeasonEpisode { Id = 10, SeasonId = 7, EpisodeNumber = 1, Title = "Chapter 1: The Mandalorian", AirDate = new DateTime(2019, 11, 12), Duration = RandDuration(), Rating = 8.9 },
+                new SeasonEpisode { Id = 11, SeasonId = 7, EpisodeNumber = 2, Title = "Chapter 2: The Child", AirDate = new DateTime(2019, 11, 15), Duration = RandDuration(), Rating = 8.8 },
 
                 // Show 5
-                new SeasonEpisode { Id = 12, SeasonId = 8, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2019, 12, 20), Rating = 8.2 },
-                new SeasonEpisode { Id = 13, SeasonId = 8, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2019, 12, 27), Rating = 8.4 },
-                new SeasonEpisode { Id = 14, SeasonId = 9, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2021, 12, 17), Rating = 8.5 },
+                new SeasonEpisode { Id = 12, SeasonId = 8, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2019, 12, 20), Duration = RandDuration(), Rating = 8.2 },
+                new SeasonEpisode { Id = 13, SeasonId = 8, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2019, 12, 27), Duration = RandDuration(), Rating = 8.4 },
+                new SeasonEpisode { Id = 14, SeasonId = 9, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2021, 12, 17), Duration = RandDuration(), Rating = 8.5 },
 
                 // Show 6
-                new SeasonEpisode { Id = 15, SeasonId = 10, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2011, 4, 17), Rating = 9.0 },
-                new SeasonEpisode { Id = 16, SeasonId = 10, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2011, 4, 24), Rating = 8.9 },
-                new SeasonEpisode { Id = 17, SeasonId = 11, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2012, 4, 1), Rating = 9.1 },
+                new SeasonEpisode { Id = 15, SeasonId = 10, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2011, 4, 17), Duration = RandDuration(), Rating = 9.0 },
+                new SeasonEpisode { Id = 16, SeasonId = 10, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2011, 4, 24), Duration = RandDuration(), Rating = 8.9 },
+                new SeasonEpisode { Id = 17, SeasonId = 11, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2012, 4, 1), Duration = RandDuration(), Rating = 9.1 },
+
+                // Show 7
+                new SeasonEpisode { Id = 18, SeasonId = 12, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2021, 6, 9), Duration = RandDuration(), Rating = 8.4 },
+                new SeasonEpisode { Id = 19, SeasonId = 12, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2021, 6, 16), Duration = RandDuration(), Rating = 8.6 },
+                new SeasonEpisode { Id = 20, SeasonId = 12, EpisodeNumber = 3, Title = "Episode 3", AirDate = new DateTime(2021, 6, 23), Duration = RandDuration(), Rating = 8.5 },
+                new SeasonEpisode { Id = 21, SeasonId = 13, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2020, 10, 23), Duration = RandDuration(), Rating = 7.8 },
+                new SeasonEpisode { Id = 22, SeasonId = 13, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2020, 10, 30), Duration = RandDuration(), Rating = 7.9 },
 
                 // Show 8
-                new SeasonEpisode { Id = 18, SeasonId = 12, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2021, 6, 9), Rating = 8.4 },
-                new SeasonEpisode { Id = 19, SeasonId = 12, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2021, 6, 16), Rating = 8.6 },
-                new SeasonEpisode { Id = 20, SeasonId = 12, EpisodeNumber = 3, Title = "Episode 3", AirDate = new DateTime(2021, 6, 23), Rating = 8.5 },
+                new SeasonEpisode { Id = 23, SeasonId = 14, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2022, 8, 21), Duration = RandDuration(), Rating = 8.0 },
+                new SeasonEpisode { Id = 24, SeasonId = 14, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2022, 8, 28), Duration = RandDuration(), Rating = 8.2 },
+                new SeasonEpisode { Id = 25, SeasonId = 14, EpisodeNumber = 3, Title = "Episode 3", AirDate = new DateTime(2022, 9, 4), Duration = RandDuration(), Rating = 8.1 },
 
                 // Show 9
-                new SeasonEpisode { Id = 21, SeasonId = 13, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2020, 10, 23), Rating = 7.8 },
-                new SeasonEpisode { Id = 22, SeasonId = 13, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2020, 10, 30), Rating = 7.9 },
+                new SeasonEpisode { Id = 26, SeasonId = 15, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2015, 6, 24), Duration = RandDuration(), Rating = 8.3 },
+                new SeasonEpisode { Id = 27, SeasonId = 15, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2015, 7, 1), Duration = RandDuration(), Rating = 8.2 },
 
                 // Show 10
-                new SeasonEpisode { Id = 23, SeasonId = 14, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2022, 8, 21), Rating = 8.0 },
-                new SeasonEpisode { Id = 24, SeasonId = 14, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2022, 8, 28), Rating = 8.2 },
-                new SeasonEpisode { Id = 25, SeasonId = 14, EpisodeNumber = 3, Title = "Episode 3", AirDate = new DateTime(2022, 9, 4), Rating = 8.1 },
+                new SeasonEpisode { Id = 28, SeasonId = 16, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2019, 6, 16), Duration = RandDuration(), Rating = 8.5 },
+                new SeasonEpisode { Id = 29, SeasonId = 16, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2019, 6, 23), Duration = RandDuration(), Rating = 8.6 },
 
                 // Show 11
-                new SeasonEpisode { Id = 26, SeasonId = 15, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2015, 6, 24), Rating = 8.3 },
-                new SeasonEpisode { Id = 27, SeasonId = 15, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2015, 7, 1), Rating = 8.2 },
+                new SeasonEpisode { Id = 30, SeasonId = 17, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2019, 7, 26), Duration = RandDuration(), Rating = 7.9 },
+                new SeasonEpisode { Id = 31, SeasonId = 17, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2019, 8, 2), Duration = RandDuration(), Rating = 8.0 },
 
                 // Show 12
-                new SeasonEpisode { Id = 28, SeasonId = 16, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2019, 6, 16), Rating = 8.5 },
-                new SeasonEpisode { Id = 29, SeasonId = 16, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2019, 6, 23), Rating = 8.6 },
+                new SeasonEpisode { Id = 32, SeasonId = 18, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2021, 1, 15), Duration = RandDuration(), Rating = 8.1 },
+                new SeasonEpisode { Id = 33, SeasonId = 18, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2021, 1, 22), Duration = RandDuration(), Rating = 8.2 },
 
                 // Show 13
-                new SeasonEpisode { Id = 30, SeasonId = 17, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2019, 7, 26), Rating = 7.9 },
-                new SeasonEpisode { Id = 31, SeasonId = 17, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2019, 8, 2), Rating = 8.0 },
+                new SeasonEpisode { Id = 34, SeasonId = 19, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2014, 1, 12), Duration = RandDuration(), Rating = 8.0 },
+                new SeasonEpisode { Id = 35, SeasonId = 19, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2014, 1, 19), Duration = RandDuration(), Rating = 8.1 },
 
                 // Show 14
-                new SeasonEpisode { Id = 32, SeasonId = 18, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2021, 1, 15), Rating = 8.1 },
-                new SeasonEpisode { Id = 33, SeasonId = 18, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2021, 1, 22), Rating = 8.2 },
+                new SeasonEpisode { Id = 36, SeasonId = 20, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2015, 2, 8), Duration = RandDuration(), Rating = 7.9 },
 
                 // Show 15
-                new SeasonEpisode { Id = 34, SeasonId = 19, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2014, 1, 12), Rating = 8.0 },
-                new SeasonEpisode { Id = 35, SeasonId = 19, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2014, 1, 19), Rating = 8.1 },
+                new SeasonEpisode { Id = 37, SeasonId = 21, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2015, 8, 28), Duration = RandDuration(), Rating = 8.3 },
 
                 // Show 16
-                new SeasonEpisode { Id = 36, SeasonId = 20, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2015, 2, 8), Rating = 7.9 },
+                new SeasonEpisode { Id = 38, SeasonId = 22, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2015, 12, 14), Duration = RandDuration(), Rating = 8.2 },
 
                 // Show 17
-                new SeasonEpisode { Id = 37, SeasonId = 21, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2015, 8, 28), Rating = 8.3 },
+                new SeasonEpisode { Id = 39, SeasonId = 23, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2023, 1, 15), Duration = RandDuration(), Rating = 8.4 },
 
                 // Show 18
-                new SeasonEpisode { Id = 38, SeasonId = 22, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2015, 12, 14), Rating = 8.2 },
+                new SeasonEpisode { Id = 40, SeasonId = 24, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2010, 7, 25), Duration = RandDuration(), Rating = 7.8 },
+                new SeasonEpisode { Id = 41, SeasonId = 24, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2010, 8, 1), Duration = RandDuration(), Rating = 7.9 },
 
                 // Show 19
-                new SeasonEpisode { Id = 39, SeasonId = 23, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2023, 1, 15), Rating = 8.4 },
+                new SeasonEpisode { Id = 42, SeasonId = 25, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2011, 7, 25), Duration = RandDuration(), Rating = 8.0 },
 
                 // Show 20
-                new SeasonEpisode { Id = 40, SeasonId = 24, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2010, 7, 25), Rating = 7.8 },
-                new SeasonEpisode { Id = 41, SeasonId = 24, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2010, 8, 1), Rating = 7.9 },
-                new SeasonEpisode { Id = 42, SeasonId = 25, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2011, 7, 25), Rating = 8.0 }
+                new SeasonEpisode { Id = 43, SeasonId = 26, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2011, 7, 25), Duration = RandDuration(), Rating = 5.0 },
+                new SeasonEpisode { Id = 44, SeasonId = 26, EpisodeNumber = 2, Title = "Episode 2", AirDate = new DateTime(2011, 12, 25), Duration = RandDuration(), Rating = 6.2 },
+                new SeasonEpisode { Id = 45, SeasonId = 27, EpisodeNumber = 1, Title = "Episode 1", AirDate = new DateTime(2012, 7, 25), Duration = RandDuration(), Rating = 7.8 }
             );
         }
     }

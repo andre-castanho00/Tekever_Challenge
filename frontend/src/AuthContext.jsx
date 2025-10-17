@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
 
         const loadUser = async () => {
             try {
-                console.log("Starting to load user from token");
+                // console.log("Starting to load user from token");
                 const payload = await getCurrentUser();
 
                 if (payload) {
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
                 logout();
                 toast.warning("Session expired, please login again");
             } finally {
-                console.log("Loading complete, setting loading to false");
+                // console.log("Loading complete, setting loading to false");
                 setLoading(false);
             }
         };

@@ -2,11 +2,16 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
 using System.Text;
 using Tekever_Challenge.Data;
+using Tekever_Challenge.EmailService;
 using Tekever_Challenge.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add Email service
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 // Add MySQL connection string from appsettings
 var connectionString = builder.Configuration.GetConnectionString("DB_CONNECTION")
@@ -53,7 +58,14 @@ builder.Services.AddControllers()
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGen(aux =>
+{
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+    aux.IncludeXmlComments(xmlPath);
+});
 
 builder.Services.AddCors(options =>
 {
