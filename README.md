@@ -35,7 +35,7 @@ Before starting, make sure the following are installed:
 2. Go to appsettings.json and update the connection string:
 ```json
 "ConnectionStrings": {
-  "DefaultConnection": "server=localhost;port=3306;database=tvshowsdb;user=root;password=yourpassword"
+  "DefaultConnection": "server=localhost;port=3306;database=tekeverchallengedb;user=root;password=yourpassword"
 }
 ```
 3. Run application
